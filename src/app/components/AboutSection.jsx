@@ -8,15 +8,16 @@ const TAB_DATA = [
     title: "Skills",
     id: "skills",
     content: (
-      <ul className="list-disc pl-2">
-        <li>JavaScript (</li>
-        <li>Node.js</li>
-        <li>Express</li>
-        <li>PostgreSQL</li>
-        <li>Sequelize</li>
-        <li>JavaScript</li>
-        <li>React</li>
-      </ul>
+      <ul class="list-disc pl-4">
+    <li><strong>Languages:</strong> C, C++, Python, JavaScript, TypeScript</li>
+    <li><strong>Markup/Styling:</strong> HTML, CSS, Tailwind CSS</li>
+    <li><strong>Developer Tools:</strong> Git, GitHub, Docker, Kubernetes, Postman, VS Code</li>
+    <li><strong>Frameworks & Libraries:</strong> Next.js, React, Node.js, Express, Sequelize</li>
+    <li><strong>Databases:</strong> MongoDB (Mongoose), PostgreSQL</li>
+    <li><strong>Data Analysis & Visualization:</strong> NumPy, Pandas, Seaborn, Matplotlib</li>
+    <li><strong>Coursework:</strong> Web Development, Data Structures & Algorithms, Operating Systems, Compiler Design, Machine Learning, NLP</li>
+    <li><strong>Areas of Interest:</strong> DevOps, Web Development, Machine Learning</li>
+</ul>
     ),
   },
   {

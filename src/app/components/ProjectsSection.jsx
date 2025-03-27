@@ -17,8 +17,8 @@ const projectsData = [
   {
     id: 2,
     title: "Centre-for-Career-Planning-and-Services-Portal",
-    description: "Project 2 description",
-    image: "/",
+    description: "A sleek and modern career services portal with job listings, internships, and resume-building tools",
+    image: "/ccps.webp",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/navadeep-munjam/Centre-for-Career-Planning-and-Services-Portal",
     previewUrl: "/",
