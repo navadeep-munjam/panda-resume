@@ -8,7 +8,7 @@ const TAB_DATA = [
     title: "Skills",
     id: "skills",
     content: (
-      <ul class="list-disc pl-4">
+      <ul className="list-disc pl-4">
     <li><strong>Languages:</strong> C, C++, Python, JavaScript, TypeScript</li>
     <li><strong>Markup/Styling:</strong> HTML, CSS, Tailwind CSS</li>
     <li><strong>Developer Tools:</strong> Git, GitHub, Docker, Kubernetes, Postman, VS Code</li>
