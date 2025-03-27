@@ -66,7 +66,9 @@ export default function Chatbot() {
           <div className="flex-1 p-4 overflow-y-auto">
             {messages.length === 0 ? (
               <div className="text-center text-gray-500 mt-10">
-                <p>Ask about Navadeep's:</p>
+                <p> <div>Ask about Navadeep{"'"}s projects...</div>
+
+                </p>
                 <ul className="mt-2 text-sm">
                   <li>• Projects (GO Compiler, Emotion Analysis)</li>
                   <li>• Technical Skills</li>
@@ -102,14 +104,15 @@ export default function Chatbot() {
           {/* Input Form */}
           <form onSubmit={handleSubmit} className="p-4 border-t">
             <div className="flex gap-2">
-              <input
+                <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your question..."
-                className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 bg-white" // Added text-gray-800 and bg-white
                 disabled={isLoading}
-              />
+                />
+
               <button
                 type="submit"
                 disabled={!input || isLoading}
