@@ -21,7 +21,7 @@ jobs:
         run: npm run build
         
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v4  # Correct latest version
+        uses: amondnet/vercel-action@v2
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
