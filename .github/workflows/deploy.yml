@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -17,13 +17,14 @@ jobs:
       - name: Install dependencies
         run: npm install
         
-      - name: Build project
+      - name: Build
         run: npm run build
         
       - name: Deploy to Vercel
-        uses: vercel/actions/deploy@v1
+        uses: amondnet/vercel-action@v25.2.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
+          build-env: |
+            NEXT_PUBLIC_VERCEL_ENV=production
