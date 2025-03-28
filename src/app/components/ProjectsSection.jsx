@@ -9,7 +9,7 @@ const projectsData = [
     id: 1,
     title: "Multimodal emotion cause pair extraction",
     description: " A system that extracts emotion-cause pairs from text and images using deep learning.",
-    image: "/multimodal_image.webp",  // Corrected path
+    image: "/multimodal_image.webp",  
     tag: ["All", "Web"],
     gitUrl: "https://github.com/nagajas/NVDL",
     previewUrl: "/",
