@@ -38,11 +38,11 @@ const EmailSection = () => {
     }
   };
 
-  // SVG illustration as a React component (no file needed)
+  // Responsive SVG illustration
   const ContactIllustration = () => (
     <svg 
       viewBox="0 0 500 500" 
-      className="w-full h-auto max-w-md mx-auto"
+      className="w-full h-auto max-w-xs md:max-w-sm mx-auto"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
@@ -80,67 +80,87 @@ const EmailSection = () => {
   );
 
   return (
-    <section id="contact" className="relative py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary-500/10 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary-600/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-primary-500/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-secondary-600/10 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">Touch</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-          "I&apos;m currently looking for new opportunities. My inbox is always open."
+          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+            "I'm currently looking for new opportunities. My inbox is always open."
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Content Grid */}
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8 order-2 md:order-1"
           >
             <div className="flex justify-center md:justify-start">
               <ContactIllustration />
             </div>
             
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-white">Let's Connect</h3>
-              <p className="text-gray-400">
-                I'm currently looking for new opportunities. My inbox is always open.
-                "Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!"
-                </p>
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-white text-center md:text-left">
+                Let's Connect
+              </h3>
+              <p className="text-gray-400 text-sm sm:text-base text-center md:text-left">
+                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              </p>
             </div>
 
-            <div className="flex space-x-4 justify-center md:justify-start">
+            <div className="flex space-x-3 sm:space-x-4 justify-center md:justify-start">
               <motion.a
                 href="https://github.com/navadeep-munjam"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
-                className="bg-[#1E1E1E] p-3 rounded-lg hover:bg-[#2E2E2E] transition-colors"
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#1E1E1E] p-2 sm:p-3 rounded-lg hover:bg-[#2E2E2E] transition-colors"
+                aria-label="GitHub profile"
               >
-                <Image src={GithubIcon} alt="GitHub" width={24} height={24} />
+                <Image 
+                  src={GithubIcon} 
+                  alt="GitHub" 
+                  width={20} 
+                  height={20} 
+                  className="w-5 h-5 sm:w-6 sm:h-6" 
+                />
               </motion.a>
               <motion.a
                 href="https://www.linkedin.com/in/munjam-navadeep/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
-                className="bg-[#1E1E1E] p-3 rounded-lg hover:bg-[#2E2E2E] transition-colors"
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#1E1E1E] p-2 sm:p-3 rounded-lg hover:bg-[#2E2E2E] transition-colors"
+                aria-label="LinkedIn profile"
               >
-                <Image src={LinkedinIcon} alt="LinkedIn" width={24} height={24} />
+                <Image 
+                  src={LinkedinIcon} 
+                  alt="LinkedIn" 
+                  width={20} 
+                  height={20} 
+                  className="w-5 h-5 sm:w-6 sm:h-6" 
+                />
               </motion.a>
             </div>
           </motion.div>
@@ -151,14 +171,18 @@ const EmailSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="bg-[#181818] rounded-xl p-8 shadow-lg border border-[#33353F]"
+            className="bg-[#181818] rounded-xl p-6 sm:p-8 shadow-lg border border-[#33353F] order-1 md:order-2"
           >
             {emailSubmitted ? (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center py-6 sm:py-8">
+                <motion.div
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  className="w-14 h-14 sm:w-16 sm:h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 text-green-500"
+                    className="h-6 w-6 sm:h-8 sm:w-8 text-green-500"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -170,22 +194,26 @@ const EmailSection = () => {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-gray-400">
-                Thank you for reaching out. I&apos;ll get back to you soon.
+                </motion.div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                  Message Sent!
+                </h3>
+                <p className="text-gray-400 text-sm sm:text-base mb-4">
+                  Thank you for reaching out. I'll get back to you soon.
                 </p>
-                <button
+                <motion.button
                   onClick={() => setEmailSubmitted(false)}
-                  className="mt-6 px-6 py-2 bg-primary-500 hover:bg-primary-600 rounded-lg text-white font-medium transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="mt-4 sm:mt-6 px-5 py-2 sm:px-6 sm:py-2 bg-primary-500 hover:bg-primary-600 rounded-lg text-white font-medium transition-colors text-sm sm:text-base"
                 >
                   Send Another Message
-                </button>
+                </motion.button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-300 mb-1 sm:mb-2">
                     Your Email
                   </label>
                   <input
@@ -193,13 +221,13 @@ const EmailSection = () => {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-sm sm:text-base text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     placeholder="your-email@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-gray-300 mb-1 sm:mb-2">
                     Subject
                   </label>
                   <input
@@ -207,29 +235,31 @@ const EmailSection = () => {
                     id="subject"
                     name="subject"
                     required
-                    className="w-full px-4 py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-sm sm:text-base text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     placeholder="What's this about?"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-300 mb-1 sm:mb-2">
                     Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={5}
+                    rows={4}
                     required
-                    className="w-full px-4 py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="Hello Navadeep, I&apos;d like to talk about..."
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-sm sm:text-base text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="Hello Navadeep, I'd like to talk about..."
                   ></textarea>
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
                   disabled={isLoading}
-                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
+                  whileHover={!isLoading ? { scale: 1.02 } : {}}
+                  whileTap={!isLoading ? { scale: 0.98 } : {}}
+                  className={`w-full py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-medium transition-colors text-sm sm:text-base ${
                     isLoading
                       ? "bg-gray-600 cursor-not-allowed"
                       : "bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-primary-600 hover:to-secondary-700 text-white"
@@ -238,7 +268,7 @@ const EmailSection = () => {
                   {isLoading ? (
                     <span className="flex items-center justify-center">
                       <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        className="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -262,7 +292,7 @@ const EmailSection = () => {
                   ) : (
                     "Send Message"
                   )}
-                </button>
+                </motion.button>
               </form>
             )}
           </motion.div>
