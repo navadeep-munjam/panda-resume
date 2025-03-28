@@ -98,7 +98,7 @@ const EmailSection = () => {
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">Touch</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Have a project in mind or want to discuss opportunities? I'd love to hear from you!
+          "I&apos;m currently looking for new opportunities. My inbox is always open."
           </p>
         </motion.div>
 
@@ -119,8 +119,8 @@ const EmailSection = () => {
               <h3 className="text-2xl font-bold text-white">Let's Connect</h3>
               <p className="text-gray-400">
                 I'm currently looking for new opportunities. My inbox is always open.
-                Whether you have a question or just want to say hi, I'll try my best to get back to you!
-              </p>
+                "Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!"
+                </p>
             </div>
 
             <div className="flex space-x-4 justify-center md:justify-start">
@@ -173,7 +173,7 @@ const EmailSection = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
                 <p className="text-gray-400">
-                  Thank you for reaching out. I'll get back to you soon.
+                Thank you for reaching out. I&apos;ll get back to you soon.
                 </p>
                 <button
                   onClick={() => setEmailSubmitted(false)}
@@ -222,7 +222,7 @@ const EmailSection = () => {
                     rows={5}
                     required
                     className="w-full px-4 py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="Hello Navadeep, I'd like to talk about..."
+                    placeholder="Hello Navadeep, I&apos;d like to talk about..."
                   ></textarea>
                 </div>
 
@@ -273,89 +273,3 @@ const EmailSection = () => {
 };
 
 export default EmailSection;
-// "use client";
-// import React, { useState } from "react";
-// import GithubIcon from "../../../public/github-icon.svg";
-// import LinkedinIcon from "../../../public/linkedin-icon.svg";
-// import Link from "next/link";
-// import Image from "next/image";
-
-// const EmailSection = () => {
-//   const [emailSubmitted, setEmailSubmitted] = useState(false);
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const data = {
-//       email: e.target.email.value,
-//       subject: e.target.subject.value,
-//       message: e.target.message.value,
-//     };
-
-//     const response = await fetch("/api/send", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(data),
-//     });
-
-//     if (response.ok) {
-//       console.log("Message sent.");
-//       setEmailSubmitted(true);
-//       e.target.reset();
-//     } else {
-//       console.error("Message failed.");
-//     }
-//   };
-
-//   return (
-//     <section id="contact" className="grid md:grid-cols-2 my-12 py-24 gap-4 relative">
-//       <div className="z-10">
-//         <h5 className="text-xl font-bold text-white my-2">Let&apos;s Connect</h5>
-//         <p className="text-[#ADB7BE] mb-4 max-w-md">
-//           I&apos;m currently looking for new opportunities. My inbox is always open.
-//           Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
-//         </p>
-//         <div className="socials flex flex-row gap-2">
-//           <Link href="https://github.com/navadeep-munjam">
-//             <Image src={GithubIcon} alt="Github Icon" />
-//           </Link>
-//           <Link href="https://www.linkedin.com/in/munjam-navadeep/">
-//             <Image src={LinkedinIcon} alt="Linkedin Icon" />
-//           </Link>
-//         </div>
-//       </div>
-//       <div>
-//         {emailSubmitted ? (
-//           <p className="text-green-500 text-sm mt-2">Email sent successfully!</p>
-//         ) : (
-//           <form className="flex flex-col" onSubmit={handleSubmit}>
-//             <div className="mb-6">
-//               <label htmlFor="email" className="text-white block mb-2 text-sm font-medium">Your email</label>
-//               <input name="email" type="email" id="email" required
-//                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-//                 placeholder="your-email@example.com" />
-//             </div>
-//             <div className="mb-6">
-//               <label htmlFor="subject" className="text-white block text-sm mb-2 font-medium">Subject</label>
-//               <input name="subject" type="text" id="subject" required
-//                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-//                 placeholder="Just saying hi" />
-//             </div>
-//             <div className="mb-6">
-//               <label htmlFor="message" className="text-white block text-sm mb-2 font-medium">Message</label>
-//               <textarea name="message" id="message" required
-//                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-//                 placeholder="Let's talk about..." />
-//             </div>
-//             <button type="submit"
-//               className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full">
-//               Send Message
-//             </button>
-//           </form>
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default EmailSection;

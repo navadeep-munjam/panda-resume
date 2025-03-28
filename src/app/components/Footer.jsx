@@ -51,7 +51,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-gray-400 text-sm max-w-xs">
-              Creating digital experiences that matter. Let's build something amazing together.
+            "Creating digital experiences that matter. Let&apos;s build something amazing together."
             </p>
           </motion.div>
 
