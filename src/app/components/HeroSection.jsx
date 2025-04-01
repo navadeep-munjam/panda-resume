@@ -72,7 +72,7 @@ const HeroSection = () => {
               Get In Touch
             </Link>
             <Link
-              href="/resume.pdf"
+              href="/panda_SDE.pdf"
               className="px-8 py-3 rounded-full border border-primary-500 text-primary-100 hover:bg-primary-500/10 font-medium transition-all duration-300 text-center"
             >
   Download Resume 
