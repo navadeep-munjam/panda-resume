@@ -57,13 +57,13 @@ const projectsData = [
   },
 
   {
-    id: 4,
+    id: 6,  // Changed from 4 to 6
     title: "Full Stack Blog Platform",
     description: "A full-stack blog platform with user authentication, post creation, and commenting features",
     image: "/linuxshell.webp",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/navadeep-munjam/panda-Blog.git",
-    previewUrl: "https://panda-blog-phi.vercel.app/", // No demo available
+    previewUrl: "https://panda-blog-phi.vercel.app/",
     technologies: ["NextJS", "React","Postgress", "Vercel","CI/CD"]
   },
 ];
