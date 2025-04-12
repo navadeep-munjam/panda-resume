@@ -17,7 +17,6 @@ export async function POST(req) {
       },
     });
 
-    // Email options
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "munjamnavadeep123@gmail.com", // Change this to your receiving email
