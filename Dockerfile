@@ -1,4 +1,29 @@
 
+
+
+
+# FROM node:current-alpine AS base
+
+# WORKDIR /app
+
+# COPY package.json package-lock.json ./
+
+
+# RUN npm install
+
+# COPY . .
+
+# # Build the application
+# CMD ["npm", "run", "dev"]
+
+
+
+
+
+
+
+
+
 # ---------------------
 # Build stage with Bun (includes dev dependencies)
 # ---------------------
@@ -46,50 +71,50 @@
     EXPOSE 3000
     USER nodejs
     CMD ["node", "server.js"]
-# # ---------------------
-# # Base dependencies
-# # ---------------------
-#     FROM oven/bun:1.2.9-alpine AS deps
+# # # ---------------------
+# # # Base dependencies
+# # # ---------------------
+# #     FROM oven/bun:1.2.9-alpine AS deps
 
-#     WORKDIR /app
+# #     WORKDIR /app
     
-#     # Copy only lockfile and package.json to install deps
-#     COPY bun.lock package.json ./
+# #     # Copy only lockfile and package.json to install deps
+# #     COPY bun.lock package.json ./
     
-#     # Install only production dependencies
-#     RUN bun i --frozen-lockfile
+# #     # Install only production dependencies
+# #     RUN bun i --frozen-lockfile
     
-#     # ---------------------
-#     # Build stage
-#     # ---------------------
-#     FROM oven/bun:1.2.9-alpine AS builder
+# #     # ---------------------
+# #     # Build stage
+# #     # ---------------------
+# #     FROM oven/bun:1.2.9-alpine AS builder
     
-#     WORKDIR /app
+# #     WORKDIR /app
     
-#     COPY --from=deps /app/node_modules ./node_modules
-#     COPY . .
+# #     COPY --from=deps /app/node_modules ./node_modules
+# #     COPY . .
     
-#     ENV NEXT_TELEMETRY_DISABLED=1
+# #     ENV NEXT_TELEMETRY_DISABLED=1
     
-#     RUN bun run build
+# #     RUN bun run build
     
-#     # ---------------------
-#     # Final image with Node.js
-#     # ---------------------
-#     FROM node:current-alpine AS runner
+# #     # ---------------------
+# #     # Final image with Node.js
+# #     # ---------------------
+# #     FROM node:current-alpine AS runner
     
-#     WORKDIR /app
+# #     WORKDIR /app
     
-#     ENV NODE_ENV=production
+# #     ENV NODE_ENV=production
     
-#     # Copy output from the build stage
-#     COPY --from=builder /app/.next/standalone ./
-#     COPY --from=builder /app/.next/static ./.next/static
-#     COPY --from=builder /app/public ./public
-#     COPY --from=builder /app/next.config.js ./ 
-#     COPY --from=builder /app/package.json ./
+# #     # Copy output from the build stage
+# #     COPY --from=builder /app/.next/standalone ./
+# #     COPY --from=builder /app/.next/static ./.next/static
+# #     COPY --from=builder /app/public ./public
+# #     COPY --from=builder /app/next.config.js ./ 
+# #     COPY --from=builder /app/package.json ./
     
-#     EXPOSE 3000
+# #     EXPOSE 3000
     
-#     CMD ["node", "server.js"]
+# #     CMD ["node", "server.js"]
     
