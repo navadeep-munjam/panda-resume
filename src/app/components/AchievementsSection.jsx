@@ -10,7 +10,7 @@ const NumberAnimation = ({ value, size = 48, duration = 1.5 }) => {
   useEffect(() => {
     const target = parseInt(value);
     const increment = target / (duration * 60); // 60fps
-    
+
     let current = 0;
     const timer = setInterval(() => {
       current += increment;
@@ -19,13 +19,13 @@ const NumberAnimation = ({ value, size = 48, duration = 1.5 }) => {
         clearInterval(timer);
       }
       setCurrentValue(Math.floor(current));
-    }, 1000/60);
+    }, 1000 / 60);
 
     return () => clearInterval(timer);
   }, [value, duration]);
 
   return (
-    <span 
+    <span
       className="text-white font-bold inline-block"
       style={{
         fontSize: `${size}px`,
@@ -77,7 +77,7 @@ const AchievementsSection = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -100,8 +100,8 @@ const AchievementsSection = () => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.5, 
+                transition={{
+                  duration: 0.5,
                   delay: index * 0.1,
                   type: "spring",
                   stiffness: 100,
@@ -111,7 +111,7 @@ const AchievementsSection = () => {
                 className="flex flex-col items-center text-center p-4 sm:p-6 rounded-xl bg-[#202020] hover:bg-[#252525] transition-all duration-300 group"
               >
                 {/* Icon */}
-                <motion.div 
+                <motion.div
                   className="mb-3 sm:mb-4 p-3 rounded-full bg-[#1E1E1E] group-hover:bg-primary-500/10 group-hover:shadow-primary-500/20 group-hover:shadow-sm transition-all"
                   whileHover={{ scale: 1.1 }}
                 >
@@ -122,8 +122,8 @@ const AchievementsSection = () => {
 
                 {/* Animated Number */}
                 <div className="flex items-center justify-center h-20 sm:h-24 md:h-32">
-                  <NumberAnimation 
-                    value={achievement.value} 
+                  <NumberAnimation
+                    value={achievement.value}
                     size={48} // Base size for mobile
                     className="text-5xl sm:text-6xl"
                   />

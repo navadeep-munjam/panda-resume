@@ -1,6 +1,9 @@
 name: Deploy to Vercel
+
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
 
 jobs:
@@ -8,23 +11,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Install Node.js
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
+          cache: 'npm'
+
       - name: Install dependencies
-        run: npm install
-        
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test
+
       - name: Build
         run: npm run build
-        
+
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25.2.0
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           build-env: |
             NEXT_PUBLIC_VERCEL_ENV=production
+            NODE_ENV=production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

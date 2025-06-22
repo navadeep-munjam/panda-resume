@@ -55,8 +55,8 @@ const MenuOverlay = ({ links, isOpen }) => {
                 whileTap={{ scale: 0.95 }}
                 className="w-full max-w-xs"
               >
-                <NavLink 
-                  href={link.path} 
+                <NavLink
+                  href={link.path}
                   title={link.title}
                   className="block text-2xl font-medium text-center py-4 px-8 text-white hover:text-primary-400 transition-colors border-b border-transparent hover:border-primary-400"
                 />
@@ -65,7 +65,7 @@ const MenuOverlay = ({ links, isOpen }) => {
           </motion.ul>
 
           {/* Social links or additional menu items can be added here */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-10 left-0 right-0 flex justify-center space-x-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

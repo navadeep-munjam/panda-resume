@@ -25,23 +25,21 @@ const NavLink = ({ href, title, isMobile = false }) => {
         `}
       >
         {title}
+
         {/* Animated underline - desktop only */}
         {!isMobile && (
           <motion.span
-            className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-500"
-            initial={{ scaleX: 0, originX: 0 }}
-            groupHover={{ scaleX: 1 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"
           />
         )}
       </Link>
-      
+
       {/* Mobile active indicator */}
       {isMobile && (
         <motion.div
           className="absolute left-0 top-1/2 h-1 w-1 rounded-full bg-primary-500"
           initial={{ opacity: 0, x: -10 }}
-          groupHover={{ opacity: 1, x: 0 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.2 }}
         />
       )}
