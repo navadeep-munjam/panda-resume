@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -24,7 +25,6 @@ jobs:
       - name: Lint
         run: npm run lint
 
-
       - name: Build
         run: npm run build
 
@@ -35,10 +35,8 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: '--prod'
-          working-directory: ./
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          build-env: |
-            NEXT_PUBLIC_VERCEL_ENV=production
-            NODE_ENV=production
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          NODE_ENV: production
+          NEXT_PUBLIC_VERCEL_ENV: production
