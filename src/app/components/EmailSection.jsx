@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
@@ -9,108 +8,190 @@ import LinkedinIcon from "../../../public/linkedin-icon.svg";
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-
     try {
       const response = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setEmailSubmitted(true);
-        e.target.reset();
+        setFormData({ email: "", subject: "", message: "" });
+      } else {
+        throw new Error("Failed to send message");
       }
     } catch (error) {
       console.error("Message failed:", error);
+      // You could add a toast notification here
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Responsive SVG illustration
+  // Enhanced SVG illustration with animations
   const ContactIllustration = () => (
-    <svg 
+    <motion.svg 
       viewBox="0 0 500 500" 
       className="w-full h-auto max-w-xs md:max-w-sm mx-auto"
       xmlns="http://www.w3.org/2000/svg"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <defs>
         <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#6366f1" />
           <stop offset="100%" stopColor="#8b5cf6" />
         </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge> 
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
       </defs>
-      <path
+      
+      <motion.path
         d="M250,100 C350,50 450,150 400,250 C350,350 250,400 150,350 C50,300 100,200 150,150 C200,100 250,100 250,100 Z"
         fill="url(#gradient)"
         opacity="0.2"
+        animate={{ 
+          d: [
+            "M250,100 C350,50 450,150 400,250 C350,350 250,400 150,350 C50,300 100,200 150,150 C200,100 250,100 250,100 Z",
+            "M250,110 C340,60 440,140 390,240 C340,340 250,390 160,340 C60,290 110,190 160,140 C210,110 250,110 250,110 Z",
+            "M250,100 C350,50 450,150 400,250 C350,350 250,400 150,350 C50,300 100,200 150,150 C200,100 250,100 250,100 Z"
+          ]
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
-      <path
+      
+      <motion.path
         d="M150,200 L150,300 L250,350 L350,300 L350,200 L250,150 L150,200 Z"
         fill="none"
         stroke="#8b5cf6"
         strokeWidth="3"
+        filter="url(#glow)"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 2, delay: 0.5 }}
       />
-      <path
+      
+      <motion.path
         d="M150,200 L250,250 L350,200 M150,250 L250,300 L350,250"
         fill="none"
         stroke="#8b5cf6"
         strokeWidth="2"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1.5, delay: 1 }}
       />
-      <circle cx="250" cy="250" r="50" fill="none" stroke="#6366f1" strokeWidth="2" />
-      <path
+      
+      <motion.circle 
+        cx="250" 
+        cy="250" 
+        r="50" 
+        fill="none" 
+        stroke="#6366f1" 
+        strokeWidth="2"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+      />
+      
+      <motion.path
         d="M230,240 L250,260 L280,230"
         fill="none"
         stroke="#6366f1"
         strokeWidth="3"
         strokeLinecap="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1, delay: 2 }}
       />
-    </svg>
+    </motion.svg>
   );
 
   return (
-    <section id="contact" className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      {/* Background elements */}
+    <section id="contact" className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Enhanced background elements */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute top-0 left-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-primary-500/10 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-secondary-600/10 rounded-full filter blur-3xl"></div>
+        <motion.div 
+          className="absolute top-0 left-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-primary-500/10 rounded-full filter blur-3xl"
+          animate={{ 
+            x: [0, 20, 0],
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-0 right-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-secondary-600/10 rounded-full filter blur-3xl"
+          animate={{ 
+            x: [0, -20, 0],
+            y: [0, 20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary-500/5 to-secondary-600/5" />
       </div>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Enhanced Section Header */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
-            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">Touch</span>
-          </h2>
-          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+          <motion.h2 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-secondary-500 to-primary-600 animate-pulse">Touch</span>
+          </motion.h2>
+          <motion.p 
+            className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             "I'm currently looking for new opportunities. My inbox is always open."
-          </p>
+          </motion.p>
         </motion.div>
 
-        {/* Content Grid */}
+        {/* Enhanced Content Grid */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Column - Contact Info */}
+          {/* Enhanced Left Column - Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
             className="space-y-6 sm:space-y-8 order-2 md:order-1"
           >
