@@ -3,7 +3,6 @@ import React from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react"; // Lucide icons
 
 const socialLinks = [
@@ -28,6 +27,26 @@ const neumorph =
   "bg-[#23272f] shadow-[8px_8px_24px_#181a20,-8px_-8px_24px_#2c313a]";
 
 const HeroSection = () => {
+  const handleDownload = async () => {
+    const filePath = "/NAVADEEP_SDE.pdf";
+    try {
+      const res = await fetch(filePath);
+      if (!res.ok) throw new Error("File not found");
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "NAVADEEP_SDE.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      alert("Resume not found. Please try again later.");
+    }
+  };
+
   return (
     <section className="lg:py-20 py-12">
       <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 max-w-7xl mx-auto px-4">
@@ -85,18 +104,19 @@ const HeroSection = () => {
             transition={{ delay: 0.8, duration: 0.5 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Link
+            <a
               href="/#contact"
               className={`px-8 py-3 rounded-full font-medium transition-all duration-300 text-white text-center ${neumorph} hover:scale-105 hover:shadow-[0_0_32px_#a78bfa55]`}
             >
               Get In Touch
-            </Link>
-            <Link
-              href="/NAVADEEP_SDE.pdf"
+            </a>
+
+            <button
+              onClick={handleDownload}
               className={`px-8 py-3 rounded-full border border-primary-500 text-primary-100 font-medium transition-all duration-300 text-center ${neumorph} hover:scale-105 hover:shadow-[0_0_32px_#38bdf855]`}
             >
               Download Resume
-            </Link>
+            </button>
           </motion.div>
 
           <motion.div
