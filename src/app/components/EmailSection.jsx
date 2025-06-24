@@ -41,16 +41,15 @@ const EmailSection = () => {
       }
     } catch (error) {
       console.error("Message failed:", error);
-      // You could add a toast notification here
+
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Enhanced SVG illustration with animations
   const ContactIllustration = () => (
-    <motion.svg 
-      viewBox="0 0 500 500" 
+    <motion.svg
+      viewBox="0 0 500 500"
       className="w-full h-auto max-w-xs md:max-w-sm mx-auto"
       xmlns="http://www.w3.org/2000/svg"
       initial={{ opacity: 0, scale: 0.8 }}
@@ -63,19 +62,19 @@ const EmailSection = () => {
           <stop offset="100%" stopColor="#8b5cf6" />
         </linearGradient>
         <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-          <feMerge> 
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
       </defs>
-      
+
       <motion.path
         d="M250,100 C350,50 450,150 400,250 C350,350 250,400 150,350 C50,300 100,200 150,150 C200,100 250,100 250,100 Z"
         fill="url(#gradient)"
         opacity="0.2"
-        animate={{ 
+        animate={{
           d: [
             "M250,100 C350,50 450,150 400,250 C350,350 250,400 150,350 C50,300 100,200 150,150 C200,100 250,100 250,100 Z",
             "M250,110 C340,60 440,140 390,240 C340,340 250,390 160,340 C60,290 110,190 160,140 C210,110 250,110 250,110 Z",
@@ -84,7 +83,7 @@ const EmailSection = () => {
         }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
-      
+
       <motion.path
         d="M150,200 L150,300 L250,350 L350,300 L350,200 L250,150 L150,200 Z"
         fill="none"
@@ -95,7 +94,7 @@ const EmailSection = () => {
         animate={{ pathLength: 1 }}
         transition={{ duration: 2, delay: 0.5 }}
       />
-      
+
       <motion.path
         d="M150,200 L250,250 L350,200 M150,250 L250,300 L350,250"
         fill="none"
@@ -105,19 +104,19 @@ const EmailSection = () => {
         animate={{ pathLength: 1 }}
         transition={{ duration: 1.5, delay: 1 }}
       />
-      
-      <motion.circle 
-        cx="250" 
-        cy="250" 
-        r="50" 
-        fill="none" 
-        stroke="#6366f1" 
+
+      <motion.circle
+        cx="250"
+        cy="250"
+        r="50"
+        fill="none"
+        stroke="#6366f1"
         strokeWidth="2"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
       />
-      
+
       <motion.path
         d="M230,240 L250,260 L280,230"
         fill="none"
@@ -135,18 +134,18 @@ const EmailSection = () => {
     <section id="contact" className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Enhanced background elements */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <motion.div 
+        <motion.div
           className="absolute top-0 left-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-primary-500/10 rounded-full filter blur-3xl"
-          animate={{ 
+          animate={{
             x: [0, 20, 0],
             y: [0, -20, 0],
             scale: [1, 1.1, 1]
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-0 right-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-secondary-600/10 rounded-full filter blur-3xl"
-          animate={{ 
+          animate={{
             x: [0, -20, 0],
             y: [0, 20, 0],
             scale: [1, 1.1, 1]
@@ -165,7 +164,7 @@ const EmailSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-10 sm:mb-16"
         >
-          <motion.h2 
+          <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -174,7 +173,7 @@ const EmailSection = () => {
           >
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-secondary-500 to-primary-600 animate-pulse">Touch</span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -198,7 +197,7 @@ const EmailSection = () => {
             <div className="flex justify-center md:justify-start">
               <ContactIllustration />
             </div>
-            
+
             <div className="space-y-3 sm:space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold text-white text-center md:text-left">
                 Let's Connect
@@ -218,12 +217,12 @@ const EmailSection = () => {
                 className="bg-[#1E1E1E] p-2 sm:p-3 rounded-lg hover:bg-[#2E2E2E] transition-colors"
                 aria-label="GitHub profile"
               >
-                <Image 
-                  src={GithubIcon} 
-                  alt="GitHub" 
-                  width={20} 
-                  height={20} 
-                  className="w-5 h-5 sm:w-6 sm:h-6" 
+                <Image
+                  src={GithubIcon}
+                  alt="GitHub"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 sm:w-6 sm:h-6"
                 />
               </motion.a>
               <motion.a
@@ -235,12 +234,12 @@ const EmailSection = () => {
                 className="bg-[#1E1E1E] p-2 sm:p-3 rounded-lg hover:bg-[#2E2E2E] transition-colors"
                 aria-label="LinkedIn profile"
               >
-                <Image 
-                  src={LinkedinIcon} 
-                  alt="LinkedIn" 
-                  width={20} 
-                  height={20} 
-                  className="w-5 h-5 sm:w-6 sm:h-6" 
+                <Image
+                  src={LinkedinIcon}
+                  alt="LinkedIn"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 sm:w-6 sm:h-6"
                 />
               </motion.a>
             </div>
@@ -302,6 +301,8 @@ const EmailSection = () => {
                     id="email"
                     name="email"
                     required
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-sm sm:text-base text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     placeholder="your-email@example.com"
                   />
@@ -316,6 +317,8 @@ const EmailSection = () => {
                     id="subject"
                     name="subject"
                     required
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-sm sm:text-base text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     placeholder="What's this about?"
                   />
@@ -330,6 +333,8 @@ const EmailSection = () => {
                     name="message"
                     rows={4}
                     required
+                    value={formData.message}
+                    onChange={handleInputChange}
                     className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-[#1E1E1E] border border-[#33353F] rounded-lg text-sm sm:text-base text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     placeholder="Hello Navadeep, I'd like to talk about..."
                   ></textarea>
@@ -340,11 +345,10 @@ const EmailSection = () => {
                   disabled={isLoading}
                   whileHover={!isLoading ? { scale: 1.02 } : {}}
                   whileTap={!isLoading ? { scale: 0.98 } : {}}
-                  className={`w-full py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-medium transition-colors text-sm sm:text-base ${
-                    isLoading
-                      ? "bg-gray-600 cursor-not-allowed"
-                      : "bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-primary-600 hover:to-secondary-700 text-white"
-                  }`}
+                  className={`w-full py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-medium transition-colors text-sm sm:text-base ${isLoading
+                    ? "bg-gray-600 cursor-not-allowed"
+                    : "bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-primary-600 hover:to-secondary-700 text-white"
+                    }`}
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center">
